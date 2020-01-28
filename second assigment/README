@@ -1,0 +1,21 @@
+Popescu Andrei-Gabriel 313CA 
+
+Tema2 - HoneyComb
+
+	Aceasta problema se rezuma la o serie de calcule matematice pentru identificare unor pozitii, de tip coordoanate (i,j), unde i si j sunt linia respectiv coloana unei matrice, pentru plasarea caracterelor "_","/" sau "\".
+
+	Citirea datelor de intrarea sub forma unui singur sir de caractere este prima problema intampinata, pe care am solutionat-o folosind functia strtok, din biblioteca afiliata, si repectiv functia atoi(char), care converteste un char in int, cu specificatia ca orice litera sau caracter special vor deveni 0, lucru pe care l-am speculat pentru a gasi pozitia variabilei <state> care imi spune cum este prima coloana din fagure ( litera de configuratie R/C).
+
+	Dupa ce idetific pozitia valorii 0, care este unica si va da pozitia literei din sirul citit, pana la aceasta datele de intrare vor constitui vectorul col[], vectirul de coloane al fagurelui, sau cel care da numarul de celule al fiecarei coloane, iar de la caracter pana la final, datele vor constitui vectorul de regine, queen[], reprezenat de perechi de forma < coloana, linie >.
+
+	Formarea efectiva a fagurelui consta in identificarea pozitiilor pe care se afla "_", astfel :
+-pe linia 0 vor fi doar "_", de fiecare data, indiferent de tipul fagurelui
+-pe o coloana para*, daca este fagure ridicat, vor fi puse "_", de la i-1, pentru a fi coborata si analog, de la i pentru a fi ridicata 
+* coloana para nu presupune doar j%2 == 0, ci ((j-1)/2)%2 
+-in mod invers pentru configuratia de fagure coborat
+
+
+	Dupa ce am plasat caracterul "_" pe pozitiile corepunzatoare in matricea fagure, matrice formata in urma calculelor matematice, cu respectarea faptului ca o celula afagurelui ocupa 2 caractere latime si respectiv 3 lungime, cautam inca o data pozitiile pe care sunt plasate, dar urmarim sa eziate la doua spatii distanta pe linie, accelasi caracter, pentru a nu pune la final completare, si 'desenam' celula folosind "/" si "\", bazandu-ne pe simetrie.
+
+
+	Ultima etapa din rezolvarea problemei a constituit-o plasarea reginelor, pe pozitiile specificate in matrice; fiecare pozitie este calculata in functie de configuratie fagurelui si de tipul coloanei de celule ridicata sau coborata. Parcurgerea vectorului se va face din 2 in 2, cu respectarea faptului ca, pentru queen[k] % 2 == 1, in configuratia 'R', identificam coloanele ridicate pe care calculam pozitiile, euristic, urmarind matematic cateva exemple si regasind un 'pattern', respectiv queen[k]% == 0; lucram in mod analog pentru configuratia 'C'.

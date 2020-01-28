@@ -1,0 +1,32 @@
+POPESCU ANDREI GABRIEL 313CA
+
+    Problema presupune alocare dinamica a unui array bidimensional, pe care, ulterior, pentru a fi mai usor de lucrat cu elementele sale,
+l-ma transferat intr-un array unidimensional.Fiecare dintre elemenete sunt structuri.
+
+    Pentru inceput au fost citite datele de intrare si ulterior citite structurile care compun primul array, cel bidimensional.
+Pe parcursul parcurgerii tabloului comform metodei din enunt, adica, tinand cont de directie, am pus intr-un vector de structuri,
+elementele care erau valide din  punct de vedere al coditiilor de existenta (un oras care are o jucarie al carei numar este 0, nu
+exista ).
+
+    Vectorul astfel este sortat mai intai lexicografic dupa orase, pentru a face parte de afisare ceva mai facila. Este apoi transmis unei functii
+de afisare care verifica pe rand:
+
+    -daca doua elemenete sau mai multe sunt identice, deci daca prin orasul respectiv s-a trecut de mai multe ori, cazin care creste
+numarul de jucarii (elementul gasit, din vector, este apoi sters)
+    -daca doua orase cu nume identic au jucarii diferite, caz in care va pune a doua jucarie in vectorul primului element din vector
+si va sterge elementul gasit
+
+    Am obtinut in urma acestui proces un vector sortat lexicografic dupa orasele lui, dara care nu are jucariile sortate.
+
+
+    Tot in functia de afisare, determinam cate jucarii are fiecare element al vectorului si le sortam apoi, prima data dupa numar,
+si apoi pentru cele cu numar similar, le sortam lexicografic.
+
+    Numarul de pasi pe care-l face sania pe harta este contorizat in momentul parcurgerii, dar, atunci cand sania paraseste harta si
+afisam mesajul de eroare, exista un pas in plus adunat la numarul total. De aceea, numarul de pasi total facut de sanie este :
+
+      -numarul de pasi pana la impotmolire
+      -numarul de pasi total pe care i-a facut sania din care scadem o variabila de control cu valoare 1 sau 0
+
+
+Numarul de cadouri este calculat in functia de afisare dupa ce vectorul este in starea finala.

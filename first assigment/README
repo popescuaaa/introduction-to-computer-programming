@@ -1,0 +1,40 @@
+	Popescu Andrei-Gabriel 313CA
+
+Tema1 - Photo editor
+
+	Problema presupune o serie de transformari numerice pe caza unor date de intrare care reprezinta
+valorile (r,g,b) ale unor pixeli, fara folosirea unui tablou; in consecinta am folosit
+o instructiune respetitiva "for" in cadrul careia se vor face preluarile valorilor din mediul de intreare,  prelucrarea lor
+si in final, afisarea, comform cerintei, cu modificare parametrului cerut de litera s,h sau v.
+
+	Pentru a respecta cerinta, am folosit tipul float pentru datele de intrare, deoarece aceste trebuie normate
+la intervalul [0,1], lucru realizat prin impartirea la 255,fiind necesare zecimale,impartire  pe care tipul int ar realiza-o prin trunchere.
+
+	Pentru restul datelor de intrare, tipul int este suficient ( pentru <n,m> dimensiunile "tabloului" de intrere, numere pana la 10.000).
+
+	Am ales sa fac implementarea functiilor de minim si maxim interativ, la inceputul codului, urmand sa fac apelul pe parcurs,
+lucru care se putea realiza si cu um macro de tip <define> si un operator ternar:
+
+#define max(a,b) ((a)>(b)?(a):(b)) ~ float min(float a, float b);
+
+si cazul contrar pentru minimul valorilor.
+	
+	Functia "main" a codului sursa consta intr-o intructiune repetitiva.
+In "for", dupa cum spuneam, se realizeaza citirea datelor de intrare si respectiv prelucrarea lor, acesta functionand cu un contor
+care pleaca de la 0 si merge pana la p=n*m-1. Pentru fiecare iterare se vor citi datele de intrare, tripletul (r,g,b),
+acest va suferi modificari pentru adaptarea la intervalul [0,1](normarea), apoi vom forma parametrii de iesire secundari, tripletul (h,s,v),
+comform regulilor din enunt. 
+	De precizat este ca matematic la finalul formarii valorii hue(h), aceasta va trebui normata daca este pozitiva,
+fiinca depaseste intevalul de referinta, iar daca este negativa, comform enuntului : adunam 360 si normam la acceasi valoare.
+
+	Datele principale de intrare cuprind si un char(c), caracter ce da marimea de modificat, care poate fi h,s sau v dar si x, o variabila reala, fara semn precizat,care ne spune cum si cu cat  se modifica  marimea specificata de char.
+Caracterul c intra intr-un switch unde pentru fiecare caz se vor aplica o serie de operatii:
+
+	-pentru c~s marimea s1 = min(s*x,1), pentru a ramane in intervalul specificat
+	
+	-pentru c~h marimea h1 = h+x, unde, la randul lui, h1 poate fi atat negativ cat si pozitiv; pentru h1<0,acesta va deveni 0, sau altfel spus h1 = max(h1,0), iar pentru h1, h1= min(h1,1)
+
+	-pentru c~v v1 = min(v*x,1)
+
+	Tripletul de iesire (h1,s1,v1) este asfel afisat pe un rand separat pentru fiecare noua citire, cu o precizie de 5 zecimale exacte, folosind "%.5f", specifica tipului utilizat.
+ 
